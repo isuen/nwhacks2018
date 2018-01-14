@@ -17,6 +17,7 @@ public class AnimalView extends View implements View.OnTouchListener{
     private static int MAX_NUM_ANIMALS = 20;
     private static int IMG_HEIGHT = 156;
 
+
 	public AnimalView(Context context) {
 		super(context);
 
@@ -31,19 +32,12 @@ public class AnimalView extends View implements View.OnTouchListener{
 
     }
 
-    // from https://stackoverflow.com/questions/36514167/how-to-really-get-the-navigation-bar-height-in-android
-    public static int getNavBarHeight(Context context) {
-        int result = 0;
-        int resourceId = context.getResources().getIdentifier("navigation_bar_height", "dimen", "android");
-        if (resourceId > 0) {
-            result = context.getResources().getDimensionPixelSize(resourceId);
-        }
-        return result;
-    }
 
+    // returns Bitmap of animal
     public Bitmap createImg(Animal animal) {
 	    return BitmapFactory.decodeResource(getResources(), animal.getImgSrc());
     }
+
 
     public void draw(Canvas canvas, Bitmap img, Matrix m) {
         canvas.drawBitmap(img, m, null);
