@@ -1,3 +1,7 @@
+/* First attempt: used custom view for animals
+ * Much slower than using SurfaceView
+ */
+
 package proto.cuteanimals;
 
 import android.content.Context;
@@ -5,7 +9,6 @@ import android.graphics.*;
 import android.view.MotionEvent;
 import android.view.View;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class AnimalView extends View implements View.OnTouchListener{
