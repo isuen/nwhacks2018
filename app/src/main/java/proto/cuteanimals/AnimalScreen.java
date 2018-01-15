@@ -10,7 +10,6 @@ public class AnimalScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //View v = new AnimalView(this);
         View v = new AnimalPanel(this);
         v.setBackgroundResource(R.drawable.background);
 

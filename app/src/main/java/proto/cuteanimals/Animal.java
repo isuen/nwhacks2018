@@ -17,29 +17,7 @@ public class Animal {
     private Bitmap img;
     private int yMax;
 
-	private static float Y_START = 0;
     private static float SPEED = 20;
-    private int imgSrc;
-
-    /** Constructor with name of animal, start x location, and rotation change
-     *  Only used by AnimalView class (extends View)
-     * @param name
-     * @param x
-     * @param rotation
-     */
-
-	public Animal(String name, float x, float rotation) {
-		this.name = name;
-		this.imgSrc = R.drawable.doggo;
-
-		//Random rand = new Random(System.currentTimeMillis());
-		//x = rand.nextInt((max-min) + 1) + min;
-        this.x = x;
-		this.y = Y_START;
-		this.rotation = rotation;
-		angle = 0;
-		matrix = new Matrix();
-	}
 
     /** Constructs Animal with given name, starting x location, rotation, max y, and image
      *  Used to create animals in AnimalPanel (extends SurfaceView)
@@ -52,13 +30,12 @@ public class Animal {
      */
 	public Animal(String name, float x, float rotation, int yMax, Bitmap img) {
         this.name = name;
-        this.imgSrc = R.drawable.doggo;
         this.img = img;
         this.yMax = yMax;
         //Random rand = new Random(System.currentTimeMillis());
         //x = rand.nextInt((max-min) + 1) + min;
         this.x = x;
-        this.y = Y_START;
+        this.y = 0;
         this.rotation = rotation;
         angle = 0;
         matrix = new Matrix();
@@ -66,10 +43,6 @@ public class Animal {
 
 	public String getName() {
 	    return name;
-    }
-
-    public int getImgSrc() {
-	    return imgSrc;
     }
 
     public float getX() {
