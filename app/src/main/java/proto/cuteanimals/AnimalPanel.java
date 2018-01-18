@@ -14,13 +14,14 @@ import java.util.ArrayList;
 public class AnimalPanel extends SurfaceView implements SurfaceHolder.Callback, View.OnTouchListener {
 
 
-    private static int IMG_HEIGHT = 156;
+    private static final int IMG_HEIGHT = 156;
     private Bitmap DOG_IMG = BitmapFactory.decodeResource(getResources(), R.drawable.doggo);
 
 
     private PanelThread loopThread;
     private ArrayList<Animal> animals;
     private int yMax;
+    private int xMax;
 
 
 
@@ -37,11 +38,17 @@ public class AnimalPanel extends SurfaceView implements SurfaceHolder.Callback, 
 
     /**
      * Draws animals on the canvas
+     * For each animal:
+     *  First updates animal
+     *  Then checks if after update, animal is in close proximity with any other animal and acts accordingly
+     *  Then draws the animal
      * @param canvas
      */
     @Override
     public void onDraw(Canvas canvas) {
         for (Animal animal : animals) {
+            animal.update(animals);
+            animal.checkBounds(xMax, yMax);
             animal.onDraw(canvas);
         }
     }
@@ -75,6 +82,7 @@ public class AnimalPanel extends SurfaceView implements SurfaceHolder.Callback, 
     // sets yMax
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        xMax = w;
         yMax = h - IMG_HEIGHT;
         super.onSizeChanged(w, h, oldw, oldh);
     }
@@ -98,7 +106,7 @@ public class AnimalPanel extends SurfaceView implements SurfaceHolder.Callback, 
             }*/
 
             float x = motionEvent.getX();
-            animals.add(new Animal("Dog", x-IMG_HEIGHT, (x%3+1)*10, yMax, DOG_IMG));
+            animals.add(new Animal("Dog", x-IMG_HEIGHT, (x%3+1)*10, DOG_IMG));
 
             return true;
         }

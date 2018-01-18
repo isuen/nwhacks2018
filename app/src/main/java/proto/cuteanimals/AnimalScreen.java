@@ -11,7 +11,7 @@ public class AnimalScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View v = new AnimalPanel(this);
-        v.setBackgroundResource(R.drawable.background);
+        v.setBackgroundColor(0xFFaeced1);
 
         setContentView(v);
     }
